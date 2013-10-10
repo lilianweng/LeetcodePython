@@ -59,7 +59,7 @@ def phone_mapping2(num2lett, dictionary, number, words):
     
     if len(number) == 0: return True
     
-    if number in memo and not memo[number]: return False
+    if number in memo: return memo[number]
     
     n = len(number)
     can_split = False

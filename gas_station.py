@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 '''
-Leetcode:
+Leetcode: Gas Station
+
 There are N gas stations along a circular route, where the amount of gas at station i is gas[i].
-
 You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.
-
 Return the starting gas station's index if you can travel around the circuit once, otherwise return -1.
 
-Note:
-The solution is guaranteed to be unique.
-
+Note: The solution is guaranteed to be unique.
 '''
 from __future__ import division
 import random
@@ -18,8 +15,9 @@ import random
 # the car can use gas at i-th but not at j-th
 # only valid when G(i,j) >= 0
 # G(i,j) = max{G(i,mid)+G(k,mid) for i < mid < j, 
-#              gas[i] - cost[i]+...+cost[j]}
+#              gas[i] - (cost[i]+...+cost[j])}
 # We use G(i,i) for a circular route.
+# ~ O(n^2)
 def gas_station(gas, cost):
     n = len(gas)
     G = {}

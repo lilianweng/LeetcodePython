@@ -55,6 +55,7 @@ def iter_permutation(L):
     print L
     while True:
         i = n - 2
+        # Find i-th element that < right element
         while i >= 0:
             if L[i] < L[i+1]: break
             i -=1

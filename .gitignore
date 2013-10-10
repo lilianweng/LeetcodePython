@@ -1,5 +1,6 @@
 .DS_Store
 .xlsx
+.pyc
 *.*~
 _*_.*
 
