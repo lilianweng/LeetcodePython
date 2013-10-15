@@ -98,25 +98,28 @@ def scramble_str1(s1, s2):
 # a | tten <---> tten | a
 # ti | on <---> it | no
 # o | n <---> n | o
-
 # t | i <---> i | t
+def elem(s):
+    return ''.join(sorted(s))
+
+def same_elems(s1, s2):
+    return elem(s1) == elem(s2)
+
 def matching(s1, s2):
     #print s1, s2
     if s1 == s2: return True
     if len(s1) != len(s2): return False
     for i in range(1,len(s1)):
         x1, y1 = s1[:i], s1[i:]
-        
         x2, y2 = s2[:i], s2[i:]
-        if (''.join(sorted(x1)) == ''.join(sorted(x2))) and \
-           (''.join(sorted(y1)) == ''.join(sorted(y2))) and \
+        x3, y3 = s2[-i:], s2[:-i]
+        
+        if same_elems(x1,x2) and same_elems(y1,y2) and \
            matching(x1, x2) and matching(y1, y2):
             return True
         
-        x3, y3 = s2[-i:], s2[:-i]
-        if (''.join(sorted(x1)) == ''.join(sorted(x3))) and \
-           (''.join(sorted(y1)) == ''.join(sorted(y3))) and \
-           matching(x1, x3) and matching(y1, y3):
+        if same_elems(x1,x3) and same_elems(y1,y3) and \
+           matching(x1,x3) and matching(y1,y3):
             return True
     
     return False

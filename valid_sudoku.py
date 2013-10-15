@@ -31,6 +31,32 @@ def check_conflict(M, x, y, val):
     return False
 
 
+# whether the sudoku is valid
+def is_valid_sudoku(M):
+    N = 9
+    assert len(M) == N and len(M[0]) == N
+    # row; no repetition between 0~9.
+    for i in range(N):
+        if not valid_array(M[i]):
+            return False
+    # col
+    for j in range(N):
+        if not valid_array([M[i][j] for i in range(N)]):
+            return False
+    
+    # 3x3 cells
+    for x in range(0,9,3):
+        for y in range(0,9,3):
+            A = [M[i][j] for i in range(x,x+3) for j in range(y,y+3)]
+            if not valid_array(A):
+                return False
+    return True
+
+
+def valid_array(A):
+    if len(set(A)) == len(A) and min(A) >= 1 and max(A) <= 9: return True
+    return False
+
 
 if __name__ == '__main__':
     M = [[5,3,0,0,7,0,0,0,0],

@@ -17,9 +17,12 @@ def lca(root, a, b):
     if root.value == a or root.value == b: return root
     left = lca(root.left, a, b)
     right = lca(root.right, a, b)
-    if left and right: # if p and q are on both sides
+    if left and right: 
+        # a & b are on both sides
         return root
-    else: # either a/b is on one side OR a/b is not in L&R subtrees
+    else: 
+        # EITHER a/b is on one side 
+        # OR a/b is not in L&R subtrees
         return left if left else right
 
 
