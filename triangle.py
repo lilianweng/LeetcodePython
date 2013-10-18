@@ -16,7 +16,7 @@ import random
 
 # S[i][j] = min{S[i-1][j-1], S[i-1][j]} + T[i][j]
 # We only need to keep the record of the last row
-# S[j] = min{S[j-1], S[j]} + T[i][j]
+# S[j] = min{S[j-1], S[j]} + T[i][j]}
 # top-down
 def triangle(T):
     if not T: return 0

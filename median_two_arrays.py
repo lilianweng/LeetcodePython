@@ -37,6 +37,7 @@ def median_two_arrays(A, B):
 
 ### use binary search
 # http://leetcode.com/2011/03/median-of-two-sorted-arrays.html
+# KEY: #elements being disposed from each array must be the same.
 # ~O(logn + logm)
 def median_two_arrays2(A, B):
     #print A, B, '--->',
@@ -46,13 +47,18 @@ def median_two_arrays2(A, B):
         i = m//2
         j = n//2
         if A[i] <= B[j]:
-            # median is between [A[i], B[j]]
+            # Median is between [A[i], B[j]], so
+            # we can ignore A's left part, A[0:i], length = i
+            # we can ignore B's right part, B[j+1:n], length = n-j-1
             l, r = i, n-j-1
-            k = min(l,r)+1 if l != r else min(l,r) # THIS IS TRICKY!
+            ### THIS IS TRICKY!
+            # '+1' helps include the medians in A & B.
+            # when l == r, we can safely ignore current medians.
+            k = min(l,r)+1 if l != r else min(l,r)
             A = A[k:]
             B = B[:-k]
         elif A[i] > B[j]:
-            # median is between [B[j], A[i]]
+            # Median is between [B[j], A[i]]
             l,r = j, m-i-1
             k = min(l,r)+1 if l != r else min(l,r)
             A = A[:-k]
@@ -73,7 +79,9 @@ def median_one_array(A):
 
 
 ##########################################################
-
+'''
+Find kth smallest in two sorted arrays.
+'''
 def kth_two_arrays(A, B, k):
     k -= 1
     m, n = len(A), len(B)

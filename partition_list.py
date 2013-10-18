@@ -12,32 +12,30 @@ import random
 from LinkedList import Node
 
 
-def part_list(node, val):
-    root = node
-    small = None # the end of "small part" of the link
-    large = None # the end of "large part" of the link
+def part_list(head, val):
+    dummy = Node(None, next=head)
+    node = head
+    small = dummy # the end of "small part" of the link
+    large = dummy # the end of "large part" of the link
     while node:
-        print 'current node', node.value
+        print head, 'small:', small.value, 'large:', large.value,
+        print 'current:', node, 'next:', node.next
         next_node = node.next
         if node.value >= val:
-            # the first large element
             large = node
         else:
-            if large:
+            # Change the connection
+            if small.next != node:
                 print 'move', node.value
-                # change the connection
-                if small:
-                    node.next = small.next
-                    small.next = node
-                else: # change root
-                    node.next = root
-                    root = node 
+                node.next = small.next
+                small.next = node
                 large.next = next_node
             # update the tail pointer to the small part
             small = node
         node = next_node
-    print root
-    return root
+    head = dummy.next
+    print head
+    return head
 
 
 if __name__ == '__main__':
