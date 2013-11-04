@@ -7,7 +7,7 @@ Write an efficient algorithm that searches for a value in an m x n matrix. This 
 For example,
 Consider the following matrix:
 [
-  [1,   3,  5,  7],
+  [ 1,  3,  5,  7],
   [10, 11, 16, 20],
   [23, 30, 34, 50]
 ]
@@ -62,14 +62,15 @@ def search_in_one_quad_matrix(M, val, i, j):
     
     mid_i = (i[0]+i[1]+1)//2
     mid_j = (j[0]+j[1]+1)//2
+    founded = False
     for a,b,c,d in [(i[0],j[0],mid_i-1,mid_j-1), \
                     (i[0],mid_j,mid_i-1,j[1]), \
                     (mid_i,j[0],i[1],mid_j-1), \
                     (mid_i,mid_j,i[1],j[1])]:
         if M[a][b] <= val <= M[c][d]:
             #print 'search_in_one_quad_matrix(M, val', '(',a,c,')', '(',b,d,') )'
-            return search_in_one_quad_matrix(M, val, (a,c), (b,d))
-    return False
+            founded |= search_in_one_quad_matrix(M, val, (a,c), (b,d))
+    return founded
 
 
 # Solution#3 Search in 1/4 sub-matrix

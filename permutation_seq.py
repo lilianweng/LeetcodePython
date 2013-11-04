@@ -15,15 +15,20 @@ Note: Given n will be between 1 and 9 inclusive.
 '''
 from __future__ import division
 import random
+#from math import factorial
 
 # k = 0,1,...,(n!-1)
 def permu_seq(n, k):
-    from math import factorial
-    if k >= factorial(n): return ""
+    fact = 1
+    for i in range(1,n+1):
+        fact *= i
+    if k >= fact: return ""
+    
     digits = range(1,n+1)
     seq = []
-    for _ in range(n):
-        i, k = divmod(k, factorial(n-1))
+    while n > 0:
+        fact = int(fact/n)
+        i, k = divmod(k, fact)
         seq.append( digits[i] )
         digits.pop(i)
         n -= 1

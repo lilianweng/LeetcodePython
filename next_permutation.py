@@ -19,8 +19,8 @@ import random
 # 1,5,3,4,2 (find 3,4)
 # 2,5,4,3,2 (switch 3,4)
 # Example 2:
-# 1,5,4,3,2,1,0 (find 1,5; the first element < the left element.)
-# 1,5,4,3,2,1,0 (find 2, the first element that > 1 from the end)
+# 1,5,4,3,2,1,0 (find 1; the first element (1) < the right element (5).)
+# 1,5,4,3,2,1,0 (find 2, the first element > 1 from the end)
 # 2,5,4,3,1,1,0 (switch 1,2)
 # 2,0,1,1,3,4,5 (reverse 5,4,3,1,1,0)
 def next_permu(L):

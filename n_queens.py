@@ -58,7 +58,7 @@ def check_conflict(cols, n, i, j):
 
 
 # cols = [col_0, col_1, ..., col_n-1]
-# Queen is put on row i, col prevs[i]
+# Queen is put on row i, col[i]
 # Currently there are len(cols) row
 def n_queens_place(cols, n, rets):
     if len(cols) == n:

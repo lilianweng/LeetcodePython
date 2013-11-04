@@ -62,7 +62,7 @@ def palin_partition_min_cut(s):
                 min_cut = n-i
                 min_p = None
                 for p in palin_partition_min_cut(s[i+1:]):
-                    if len(p) < min:
+                    if len(p) < min_cut:
                         min_cut = len(p)
                         min_p = p
                 yield [first] + min_p

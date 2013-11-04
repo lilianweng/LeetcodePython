@@ -11,6 +11,7 @@ For example,
 from __future__ import division
 import random
 
+
 # O(log n) in time.
 # Search in L[i:j]
 def binary_range_search(L, val, i, j):

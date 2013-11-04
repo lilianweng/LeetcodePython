@@ -21,7 +21,7 @@ def search_rotated_arr(L, val):
     l = 0; r = len(L)-1
     while l <= r:
         mid = (l + r + 1)//2
-        if L[mid] == val: return
+        if L[mid] == val: return mid
         if L[l] <= L[mid]:
             # the lower half is sorted
             if L[l] <= val <= L[mid]: r = mid-1

@@ -31,7 +31,7 @@ def sort_colors2(L):
             if cur > zero:
                 L[zero], L[cur] = L[cur], L[zero]
                 zero += 1
-            else:
+            else: # TRICKY PART.
                 # cur == zero and L[cur] == L[zero] == 0
                 cur += 1
                 zero += 1
